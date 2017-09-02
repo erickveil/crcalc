@@ -43,11 +43,17 @@ void MainWindow::on_pushButton_clicked()
 
     while (crxp < target) {
         ++numMooks;
+        multiplier = getMultiplier(numMooks, numPlayers, difficulty);
         crxp = (bossTotals + (numMooks * mookXpEach)) * multiplier;
     }
 
     --numMooks;
-    ui->numMooks->setText(QString::number(numMooks));
+    if (numMooks < 0) {
+        ui->numMooks->setText("Needs weaker boss.");
+    }
+    else {
+        ui->numMooks->setText(QString::number(numMooks));
+    }
 
 }
 
@@ -66,14 +72,14 @@ int MainWindow::getTarget(int difficulty, int easy, int medium, int hard, int de
 double MainWindow::getMultiplier(int numMooks, int numPlayers, int difficulty)
 {
     if (numPlayers < 3) {
-        if (numMooks == 1) { return 1.5; }
+        if (numMooks <= 1) { return 1.5; }
         if (numMooks == 2) { return 2; }
         if (numMooks <= 6) { return 2.5; }
         if (numMooks <= 10) { return 3; }
         return 4;
     }
     if (numPlayers > 5) {
-        if (numMooks == 1) { return 1; }
+        if (numMooks <= 1) { return 1; }
         if (numMooks == 2) { return 1; }
         if (numMooks <= 6) { return 1.5; }
         if (numMooks <= 10) { return 2; }
@@ -81,7 +87,7 @@ double MainWindow::getMultiplier(int numMooks, int numPlayers, int difficulty)
         return 3;
     }
 
-    if (numMooks == 1) { return 1; }
+    if (numMooks <= 1) { return 1; }
     if (numMooks == 2) { return 1.5; }
     if (numMooks <= 6) { return 2; }
     if (numMooks <= 10) { return 2.5; }
