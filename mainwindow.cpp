@@ -45,6 +45,12 @@ void MainWindow::on_pushButton_clicked()
         ++numMooks;
         multiplier = getMultiplier(numMooks, numPlayers, difficulty);
         crxp = (bossTotals + (numMooks * mookXpEach)) * multiplier;
+
+        bool isInviniteLoopDanger = (crxp <= 0);
+        if (isInviniteLoopDanger) {
+            ui->numMooks->setText("Set Mook Xp > 0");
+            return;
+        }
     }
 
     --numMooks;
