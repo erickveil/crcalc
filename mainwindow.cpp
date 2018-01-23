@@ -41,6 +41,7 @@ void MainWindow::on_pushButton_clicked()
 
     int target = getTarget(difficulty, easy, medium, hard, deadly);
 
+    int max = 50;
     while (crxp < target) {
         ++numMooks;
         multiplier = getMultiplier(numMooks, numPlayers, difficulty);
@@ -49,6 +50,10 @@ void MainWindow::on_pushButton_clicked()
         bool isInviniteLoopDanger = (crxp <= 0);
         if (isInviniteLoopDanger) {
             ui->numMooks->setText("Set Mook Xp > 0");
+            return;
+        }
+        if (numMooks >= max) {
+            ui->numMooks->setText("More than 50");
             return;
         }
     }
