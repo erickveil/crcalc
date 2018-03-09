@@ -32,6 +32,10 @@ void MainWindow::on_pushButton_clicked()
     int deadly;
 
     setCRValues(avgPlayer, numPlayers, easy, medium, hard, deadly);
+    ui->leDeadly->setText(QString::number(deadly));
+    ui->leEasy->setText(QString::number(easy));
+    ui->leHard->setText(QString::number(hard));
+    ui->leMed->setText(QString::number(medium));
 
     int bossTotals = bossXpEach * numBosses;
 
@@ -49,7 +53,7 @@ void MainWindow::on_pushButton_clicked()
 
         bool isInviniteLoopDanger = (crxp <= 0);
         if (isInviniteLoopDanger) {
-            ui->numMooks->setText("Set Mook Xp > 0");
+            ui->numMooks->setText(QString("Set Mook Xp > 0.") );
             return;
         }
         if (numMooks >= max) {
@@ -60,7 +64,7 @@ void MainWindow::on_pushButton_clicked()
 
     --numMooks;
     if (numMooks < 0) {
-        ui->numMooks->setText("Needs weaker boss.");
+        ui->numMooks->setText(QString("Needs weaker boss.") );
     }
     else {
         ui->numMooks->setText(QString::number(numMooks));
@@ -247,6 +251,6 @@ void MainWindow::setCRValues(int avgPlayer, int numPlayers, int &outEasy,
 
 void MainWindow::on_but_calc_clicked()
 {
-    qDebug() << "click";
+    //qDebug() << "click";
     on_pushButton_clicked();
 }
