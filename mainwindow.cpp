@@ -7,7 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QStringList difficulty_options = (QStringList()<<"Easy"<<"Medium"<<"Hard"<<"Deadly");
+    QStringList difficulty_options =
+            (QStringList()<<"Easy"<<"Medium"<<"Hard"<<"Deadly");
     ui->comboBox->addItems(difficulty_options);
 }
 
@@ -25,7 +26,7 @@ void MainWindow::on_pushButton_clicked()
     int mookXpEach = ui->leMookXp->text().toInt();
     int numBosses = ui->leNumBosses->text().toInt();
 
-    int avgPlayer = qRound((float)playerLevels / numPlayers);
+    int avgPlayer = qRound(static_cast<float>(playerLevels) / numPlayers);
     int easy;
     int medium;
     int hard;
@@ -33,7 +34,8 @@ void MainWindow::on_pushButton_clicked()
     int deadly2;
     int deadly3;
 
-    setCRValues(avgPlayer, numPlayers, easy, medium, hard, deadly, deadly2, deadly3);
+    setCRValues(avgPlayer, numPlayers, easy, medium, hard,
+                deadly, deadly2, deadly3);
     ui->leDeadly->setText(QString::number(deadly));
     ui->leEasy->setText(QString::number(easy));
     ui->leHard->setText(QString::number(hard));
@@ -43,7 +45,11 @@ void MainWindow::on_pushButton_clicked()
 
     int numMooks = 0;
     double multiplier = getMultiplier(numMooks, numPlayers, difficulty);
-    int crxp = (bossTotals + (numMooks * mookXpEach)) * multiplier;
+    int crxp = static_cast<int>(
+                std::round(
+                    (bossTotals + (numMooks * mookXpEach)) * multiplier
+                    )
+                );
 
     int target = getTarget(difficulty, easy, medium, hard, deadly);
 
@@ -51,7 +57,11 @@ void MainWindow::on_pushButton_clicked()
     while (crxp < target) {
         ++numMooks;
         multiplier = getMultiplier(numMooks, numPlayers, difficulty);
-        crxp = (bossTotals + (numMooks * mookXpEach)) * multiplier;
+        crxp = static_cast<int>(
+                    std::round(
+                        (bossTotals + (numMooks * mookXpEach)) * multiplier
+                        )
+                    );
 
         bool isInviniteLoopDanger = (crxp <= 0);
         if (isInviniteLoopDanger) {

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <cmath>
+
 #include <QDebug>
 #include <QtGlobal>
 
