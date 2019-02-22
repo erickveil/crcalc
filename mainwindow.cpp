@@ -30,8 +30,10 @@ void MainWindow::on_pushButton_clicked()
     int medium;
     int hard;
     int deadly;
+    int deadly2;
+    int deadly3;
 
-    setCRValues(avgPlayer, numPlayers, easy, medium, hard, deadly);
+    setCRValues(avgPlayer, numPlayers, easy, medium, hard, deadly, deadly2, deadly3);
     ui->leDeadly->setText(QString::number(deadly));
     ui->leEasy->setText(QString::number(easy));
     ui->leHard->setText(QString::number(hard));
@@ -111,7 +113,8 @@ double MainWindow::getMultiplier(int numMooks, int numPlayers, int difficulty)
 }
 
 void MainWindow::setCRValues(int avgPlayer, int numPlayers, int &outEasy,
-                             int &outMedium, int &outHard, int &outDeadly)
+                             int &outMedium, int &outHard, int &outDeadly,
+                             int &outDeadly2, int &outDeadly3)
 {
     switch(avgPlayer) {
     case 1:
@@ -119,60 +122,80 @@ void MainWindow::setCRValues(int avgPlayer, int numPlayers, int &outEasy,
         outMedium = 50;
         outHard = 75;
         outDeadly = 100;
+        outDeadly2 = 150;
+        outDeadly3 = 175;
         break;
     case 2:
         outEasy = 50;
         outMedium = 100;
         outHard = 150;
         outDeadly = 200;
+        outDeadly2 = 250;
+        outDeadly3 = 300;
         break;
     case 3:
         outEasy = 75;
         outMedium = 150;
         outHard = 225;
         outDeadly = 400;
+        outDeadly2 = 600;
+        outDeadly3 = 900;
         break;
     case 4:
         outEasy = 125;
         outMedium = 250;
         outHard = 375;
         outDeadly = 500;
+        outDeadly2 = 750;
+        outDeadly3 = 1100;
         break;
     case 5:
         outEasy = 250;
         outMedium = 500;
         outHard = 750;
         outDeadly = 1100;
+        outDeadly2 = 1700;
+        outDeadly3 = 2000;
         break;
     case 6:
         outEasy = 300;
         outMedium = 600;
         outHard = 900;
         outDeadly = 1400;
+        outDeadly2 = 2100;
+        outDeadly3 = 2400;
         break;
     case 7:
         outEasy = 350;
         outMedium = 750;
         outHard = 1100;
         outDeadly = 1700;
+        outDeadly2 = 2400;
+        outDeadly3 = 2800;
         break;
     case 8:
         outEasy = 450;
         outMedium = 900;
         outHard = 1400;
         outDeadly = 2100;
+        outDeadly2 = 2800;
+        outDeadly3 = 3000;
         break;
     case 9:
         outEasy = 550;
         outMedium = 1100;
         outHard = 1600;
         outDeadly = 2400;
+        outDeadly2 = 3600;
+        outDeadly3 = 4500;
         break;
     case 10:
         outEasy = 600;
         outMedium = 1200;
         outHard = 1900;
         outDeadly = 2800;
+        outDeadly2 = 4300;
+        outDeadly3 = 6400;
         break;
     case 11:
         outEasy = 800;

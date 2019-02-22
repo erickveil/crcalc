@@ -18,7 +18,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void setCRValues(int avgPlayer, int numPlayers, int &outEasy, int &outMedium, int &outHard, int &outDeadly);
+    void setCRValues(int avgPlayer, int numPlayers, int &outEasy,
+                     int &outMedium, int &outHard, int &outDeadly,
+                     int &outDeadly2, int &outDeadly3);
     int getTarget(int difficlty, int easy, int medium, int hard, int deadly);
     double getMultiplier(int numMooks, int numPlayers, int difficulty);
 

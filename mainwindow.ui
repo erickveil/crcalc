@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>357</height>
+    <height>372</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>331</width>
-      <height>331</height>
+      <height>352</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -173,6 +173,34 @@
        </item>
        <item row="1" column="3">
         <widget class="QLineEdit" name="leDeadly">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>Deadly-2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Deadly-3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="leDeadly2">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLineEdit" name="leDeadly3">
          <property name="enabled">
           <bool>false</bool>
          </property>
